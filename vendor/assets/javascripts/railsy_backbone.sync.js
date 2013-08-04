@@ -56,6 +56,23 @@ Backbone.sync = function(method, model, options) {
     params.url = _.result(model, 'url') || urlError();
   }
 
+    // =========================================================================
+    // railsy_backbone
+    // -------------------------------------------------------------------------
+    // include the Rails CSRF token on HTTP PUTs/POSTs    
+    // 
+    if(!options.noCSRF){
+      var beforeSend = options.beforeSend;
+      
+      // Set X-CSRF-Token HTTP header
+      options.beforeSend = function(xhr) {
+        var token = $('meta[name="csrf-token"]').attr('content');
+        if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+        if (beforeSend) return beforeSend.apply(this, arguments);
+      };
+    }
+    // =========================================================================
+
   // Ensure that we have the appropriate request data.
   if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
     params.contentType = 'application/json';

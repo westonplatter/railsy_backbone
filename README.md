@@ -4,7 +4,7 @@ Underscore 1.5.1
 
 ## Features
 
-### Nested model attributes
+### Nested Model Attributes
 Allows you to specify a namespace for model attributes by defining a  ```paramRoot```  attribute. For example, 
 
 ```javascript
@@ -29,7 +29,9 @@ Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
   Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
 ```
 
-<br>
+### Works with Rails CSRF
+Sets the  ```xhr.setRequestHeader```  to the Rails CSRF token in the header.
+
 <br>
 
 ## Installation
