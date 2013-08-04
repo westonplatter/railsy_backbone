@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'sass'
   spec.add_development_dependency 'uglifier'
-  spec.add_development_dependency 'mocha', '~> 0.10.3'
-  spec.add_development_dependency 'turn', '~> 0.8.3'
-  spec.add_development_dependency 'minitest', '~> 2.10.1'
+  # spec.add_development_dependency 'mocha', '~> 0.10.3'
+  # spec.add_development_dependency 'turn', '~> 0.8.3'
+  # spec.add_development_dependency 'minitest', '~> 2.10.1'
 end
