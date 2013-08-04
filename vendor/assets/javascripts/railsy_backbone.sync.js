@@ -1,21 +1,44 @@
 // Backbone.sync
 // -------------
 
-// Override this function to change the manner in which Backbone persists
-// models to the server. You will be passed the type of request, and the
-// model in question. By default, makes a RESTful Ajax request
-// to the model's `url()`. Some possible customizations could be:
+// Need to define the methodMap since it's called from within Backbone.sync
 //
-// * Use `setTimeout` to batch rapid-fire updates into a single request.
-// * Send up the models as XML instead of JSON.
-// * Persist models via WebSockets instead of Ajax.
+var methodMap = {
+    'create': 'POST',
+    'update': 'PUT',
+    'patch':  'PATCH',
+    'delete': 'DELETE',
+    'read':   'GET'
+  };
+
+
+// Overriding Backbone.sync to nest model attributes in within the paramRoot
+// key-value JSON hashmap.
+// 
+// For example, when saving a new Model, 
 //
-// Turn on `Backbone.emulateHTTP` in order to send `PUT` and `DELETE` requests
-// as `POST`, with a `_method` parameter containing the true HTTP method,
-// as well as all requests with the body as `application/x-www-form-urlencoded`
-// instead of `application/json` with the model in a param named `model`.
-// Useful when interfacing with server-side languages like **PHP** that make
-// it difficult to read the body of `PUT` requests.
+//   var Book = Backbone.Model.extend({ 
+//     url: '/books',
+//     paramRoot: 'book'
+//   });
+// 
+//   var book_instance = new Book({ 
+//     title:  'the illiad', 
+//     author: 'homer'
+//   });
+//
+//   book_instance.sync();
+//
+// This will cause the HTTP POST to look like this, 
+//
+// Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
+//   Processing by BooksController#create as JSON
+//   Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
+// 
+//
+// Everything that is not explicitly called out as **railys_backbone** code, is
+// unmodified Backbone code.
+// 
 Backbone.sync = function(method, model, options) {
   var type = methodMap[method];
 
@@ -36,7 +59,29 @@ Backbone.sync = function(method, model, options) {
   // Ensure that we have the appropriate request data.
   if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
     params.contentType = 'application/json';
-    params.data = JSON.stringify(options.attrs || model.toJSON(options));
+    
+    // ========================================================================= 
+    // railsy_backbone
+    // ------------------------------------------------------------------------- 
+    // If model defines **paramRoot**, store model attributes within it. IE
+    // 
+    //   HTTP POST Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
+    // 
+    
+    if(model.paramRoot) {
+      var model_attributes = {}
+      model_attributes[model.paramRoot] = model.toJSON(options);
+      params.data = JSON.stringify(options.attrs || model_attributes );
+    } else {
+      params.data = JSON.stringify(options.attrs || model.toJSON(options) );
+    }
+    
+    // -------------------------------------------------------------------------
+    // original Backbone code
+    //
+    // params.data = JSON.stringify(options.attrs || model.toJSON(options) );
+    //
+    // =========================================================================
   }
 
   // For older servers, emulate JSON by encoding the request into an HTML-form.
@@ -44,7 +89,7 @@ Backbone.sync = function(method, model, options) {
     params.contentType = 'application/x-www-form-urlencoded';
     params.data = params.data ? {model: params.data} : {};
   }
-
+  
   // For older servers, emulate HTTP by mimicking the HTTP method with `_method`
   // And an `X-HTTP-Method-Override` header.
   if (options.emulateHTTP && (type === 'PUT' || type === 'DELETE' || type === 'PATCH')) {
