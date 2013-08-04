@@ -1,4 +1,6 @@
 # RailsyBackbone
+Backbone 1.0.0  
+Underscore 1.5.1
 
 ## Features
 
