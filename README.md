@@ -1,24 +1,44 @@
 # RailsyBackbone
 
-TODO: Write a gem description
+## Features
+
+### Nested model attributes
+Allows you to specify a namespace for model attributes by defining a  ```paramRoot```  attribute. For example, 
+
+```javascript
+var Book = Backbone.Model.extend({ 
+  url: '/books',
+  paramRoot: 'book'
+});
+
+var book_instance = new Book({ 
+  title:  'the illiad', 
+  author: 'homer'
+});
+
+book_instance.sync();
+```
+
+This will cause the HTTP POST to look like this, 
+
+```sh
+Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
+  Processing by BooksController#create as JSON
+  Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
+```
+
+<br>
+<br>
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'railsy_backbone'
+    gem 'railsy_backbone', github: 'westonplatter/railsy_backbone'
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install railsy_backbone
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
