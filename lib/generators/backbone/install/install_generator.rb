@@ -15,7 +15,7 @@ module Backbone
       def inject_backbone
         inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
           # "//= require underscore\n//= require backbone\n//= require backbone_rails_sync\n//= require backbone_datalink\n//= require backbone/#{application_name.underscore}\n"
-          "//= require underscore\n//= require backbone\n"
+          "//= require underscore\n//= require backbone\n//= require railsy_backbone.sync"
         end
       end
 
