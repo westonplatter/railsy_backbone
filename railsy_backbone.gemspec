@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["westonplatter@gmail.com"]
   spec.description   = %q{inspired by https://github.com/codebrew/backbone-rails + testing & updated Backbone}
   spec.summary       = %q{inspired by https://github.com/codebrew/backbone-rails + testing & updated Backbone}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/westonplatter/railsy_backbone"
   spec.license       = "MIT"
 
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
