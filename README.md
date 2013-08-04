@@ -26,7 +26,7 @@ This will cause the HTTP POST to look like this,
 ```sh
 Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
   Processing by BooksController#create as JSON
-  Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
+  Parameters: { "book" => { "title" => "the illiad", "author" => "homer" }}
 ```
 
 ### Works with Rails CSRF
