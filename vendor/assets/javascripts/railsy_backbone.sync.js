@@ -13,6 +13,9 @@
       'read':   'GET'
     };
 
+  var urlError = function() {
+    throw new Error("A 'url' property or function must be specified");
+  };
 
   // Overriding Backbone.sync to nest model attributes in within the paramRoot
   // key-value JSON hashmap.
@@ -130,7 +133,7 @@
     // that still has ActiveX enabled by default, override jQuery to use that
     // for XHR instead. Remove this line when jQuery supports `PATCH` on IE8.
     if (params.type === 'PATCH' && window.ActiveXObject &&
-          !(window.external && window.external.msActiveXFilteringEnabled)) {
+        !(window.external && window.external.msActiveXFilteringEnabled)) {
       params.xhr = function() {
         return new ActiveXObject("Microsoft.XMLHTTP");
       };
