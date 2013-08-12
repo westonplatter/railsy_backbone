@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="railsybackbone">RailsyBackbone</h1>
+
+<p>Backbone 1.0.0 <br />
+Underscore 1.5.1</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="nested-model-attributes">Nested Model Attributes</h3>
+
+<p>Allows you to specify a namespace for model attributes by defining a  <code>paramRoot</code>  attribute. For example, </p>
+
+<pre><code>var Book = Backbone.Model.extend({ 
+  url: '/books',
+  paramRoot: 'book'
+});
+
+var book_instance = new Book({ 
+  title:  'the illiad', 
+  author: 'homer'
+});
+
+book_instance.sync();
+</code></pre>
+
+<p>This will cause the HTTP POST to look like this, </p>
+
+<pre><code>Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
+  Processing by BooksController#create as JSON
+  Parameters: { "book" =&gt; { "title" =&gt; "the illiad", "author" =&gt; "homer" }}
+</code></pre>
+
+<h3 id="works-with-rails-csrf">Works with Rails CSRF</h3>
+
+<p>Sets the  <code>xhr.setRequestHeader</code>  to the Rails CSRF token in the header.</p>
+
+<p><br></p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'railsy_backbone', github: 'westonplatter/railsy_backbone'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<h2 id="contributing">Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol></div></div></div></div></body></html>
