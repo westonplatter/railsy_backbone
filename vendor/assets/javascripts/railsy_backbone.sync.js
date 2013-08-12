@@ -1,3 +1,10 @@
+// __NOTE:__ only overriding Backbone when `railsy_backbone (start) ... (end)` 
+// is explicitly called out.
+// 
+// Overriding Backbone.sync to implement,  
+// - Nested model attributes  
+// - Rails CSFR Integration  
+// 
 ( function($){
   
   // Define `methodMap` since it's called from within Backbone.sync
@@ -13,39 +20,6 @@
     throw new Error("A 'url' property or function must be specified");
   };
 
-  // Overriding Backbone.sync to nest model attributes in within the paramRoot
-  // key-value JSON hashmap. For example, when saving a new Model, 
-  //   
-  //  ```
-  //    var Book = Backbone.Model.extend({ 
-  //      url: '/books',
-  //      paramRoot: 'book'
-  //    });
-  // 
-  //    var book_instance = new Book({ 
-  //      title:  'the illiad', 
-  //      author: 'homer'
-  //    });
-  //
-  //    book_instance.sync();
-  //  ```
-  //
-  // This will cause the HTTP POST to look like this, 
-  //
-  // ```
-  //   Started POST "/books" for 127.0.0.1
-  //     Processing by BooksController#create as JSON
-  //     Parameters: { "book" => 
-  //                    { 
-  //                        "title" => "the illiad", 
-  //                        "author" => "homer"
-  //                    }
-  //                  }
-  // ```
-  // 
-  // Everything that is not explicitly called out as **railys_backbone** code, is
-  // unmodified Backbone code.
-  // 
   Backbone.sync = function(method, model, options) {
     var type = methodMap[method];
 
@@ -64,7 +38,8 @@
     }
     
     // -------------------------------------------------------------------------
-    // #### railsy_backbone
+    // railsy_backbone (start)  
+    // __Rails CSFR Integration__  
     // 
     // include the Rails CSRF token on HTTP PUTs/POSTs    
     // 
@@ -78,6 +53,8 @@
         if (beforeSend) return beforeSend.apply(this, arguments);
       };
     }
+    // railsy_backbone (end)
+    // 
     // -------------------------------------------------------------------------
 
     // Ensure that we have the appropriate request data.
@@ -85,15 +62,30 @@
       params.contentType = 'application/json';
       
       // -----------------------------------------------------------------------
-      // #### railsy_backbone
+      // railsy_backbone (start)  
+      // __Nested Model Attributes__  
       // 
-      // If model defines `paramRoot`, then store model attributes within 
-      // `paramRoot` key-value pair. For example, book attributes (`title`, 
-      // `author`) are nested within `book` key-value pair,
+      // If Backbone.Model defines `paramRoot`, then store model attributes 
+      // within `paramRoot` key-value pair. For example, book attributes 
+      // (`title`, `author`) are nested within `book` key-value pair,
       // 
-      // ```
-      //   HTTP POST Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
-      // ```
+      //      var Book = Backbone.Model.extend({ 
+      //        url: '/books',
+      //        paramRoot: 'book' 
+      //      });
+      // 
+      //      var book_instance = new Book({ 
+      //        title:  'the illiad', 
+      //        author: 'homer'
+      //      });
+      // 
+      // The resulting HTTP POST looks like this,
+      // 
+      //      book_instance.sync();
+      // 
+      //      Started POST "/books" for 127.0.0.1
+      //        Processing by BooksController#create as JSON
+      //        { "book" => { "title" => "the illiad", "author" => "home" } }
       // 
       if(model.paramRoot) {
         var model_attributes = {}
@@ -104,6 +96,8 @@
         // implementation
         params.data = JSON.stringify(options.attrs || model.toJSON(options) );
       }
+      // railsy_backbone (end)  
+      // 
       // -----------------------------------------------------------------------
     }
     

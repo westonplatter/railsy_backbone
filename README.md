@@ -4,6 +4,9 @@ Underscore 1.5.1
 
 ## Features
 
+1. [Nested Model Attributes](#nested-model-attributes)
+2. [Automatic Rails CSRF Integration](#automatic-rails-csrf-integration)
+
 ### Nested Model Attributes
 Allows you to specify a namespace for model attributes by defining a  ```paramRoot```  attribute. For example, 
 
@@ -26,8 +29,8 @@ This will cause the HTTP POST to look like this,
       Parameters: { "book" => { "title" => "the illiad", "author" => "homer" }}
 
 
-### Works with Rails CSRF
-Sets the  `xhr.setRequestHeader`  to the Rails CSRF token in the header.
+### Automatic Rails CSRF Integration
+Automatically handles the Rails `authenticity_token`. Or, more technically, sets the  `xhr.setRequestHeader`  to the Rails CSRF token supplied in the HTML `header` meta tag.
 
 <br>
 
@@ -41,10 +44,12 @@ And then execute:
 
     $ bundle
 
-## Contributing
+## Docs
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+[Here's the link to our docs](http://westonplatter.github.io/railsy_backbone/).
+
+__We really value clear communication__ (we're serious!). If you think something is missing in the docs, __please__ let us know via a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and we'll look at adding it. 
+
+## Credits
+
+See MIT-LICENSE.
