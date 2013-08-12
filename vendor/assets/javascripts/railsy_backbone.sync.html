@@ -1,4 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><title>vendor/assets/javascripts/railsy_backbone.sync</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="vendor/assets/javascripts/railsy_backbone.sync"><meta name="groc-project-path" content="vendor/assets/javascripts/railsy_backbone.sync.js"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/vendor/assets/javascripts/railsy_backbone.sync.js">vendor/assets/javascripts/railsy_backbone.sync.js</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
+<!DOCTYPE html><html lang="en"><head><title>vendor/assets/javascripts/railsy_backbone.sync</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="vendor/assets/javascripts/railsy_backbone.sync"><meta name="groc-project-path" content="vendor/assets/javascripts/railsy_backbone.sync.js"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/vendor/assets/javascripts/railsy_backbone.sync.js">vendor/assets/javascripts/railsy_backbone.sync.js</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><p><strong>NOTE:</strong> only overriding Backbone when <code>railsy_backbone (start) ... (end)</code> 
+is explicitly called out.</p>
+
+<p>Overriding Backbone.sync to implement, <br />
+- Nested model attributes <br />
+- Rails CSFR Integration  </p></div></div><div class="code"><div class="wrapper"><span class="p">(</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">){</span>
   </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Define <code>methodMap</code> since it's called from within Backbone.sync</p></div></div><div class="code"><div class="wrapper">  <span class="kd">var</span> <span class="nx">methodMap</span> <span class="o">=</span> <span class="p">{</span>
       <span class="s1">&#39;create&#39;</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
       <span class="s1">&#39;update&#39;</span><span class="o">:</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span>
@@ -9,31 +14,9 @@
 
   <span class="kd">var</span> <span class="nx">urlError</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;A &#39;url&#39; property or function must be specified&quot;</span><span class="p">);</span>
-  <span class="p">};</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Overriding Backbone.sync to nest model attributes in within the paramRoot
-key-value JSON hashmap. For example, when saving a new Model, </p>
+  <span class="p">};</span>
 
-<p>```
-   var Book = Backbone.Model.extend({ 
-     url: '/books',
-     paramRoot: 'book'
-   });</p>
-
-<p>var book_instance = new Book({ 
-     title:  'the illiad', 
-     author: 'homer'
-   });</p></div></div><div class="code"><div class="wrapper">  <span class="c1">//</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>book_instance.sync();
- ```</p></div></div><div class="code"><div class="wrapper">  <span class="c1">//</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>This will cause the HTTP POST to look like this, </p></div></div><div class="code"><div class="wrapper">  <span class="c1">//</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><pre><code>  Started POST "/books" for 127.0.0.1
-    Processing by BooksController#create as JSON
-    Parameters: { "book" =&gt; 
-                   { 
-                       "title" =&gt; "the illiad", 
-                       "author" =&gt; "homer"
-                   }
-                 }
-</code></pre>
-
-<p>Everything that is not explicitly called out as <strong>railys_backbone</strong> code, is
-unmodified Backbone code.</p></div></div><div class="code"><div class="wrapper">  <span class="nx">Backbone</span><span class="p">.</span><span class="nx">sync</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">Backbone</span><span class="p">.</span><span class="nx">sync</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">methodMap</span><span class="p">[</span><span class="nx">method</span><span class="p">];</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Default options, unless specified.</p></div></div><div class="code"><div class="wrapper">    <span class="nx">_</span><span class="p">.</span><span class="nx">defaults</span><span class="p">(</span><span class="nx">options</span> <span class="o">||</span> <span class="p">(</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{}),</span> <span class="p">{</span>
       <span class="nx">emulateHTTP</span><span class="o">:</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">emulateHTTP</span><span class="p">,</span>
       <span class="nx">emulateJSON</span><span class="o">:</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">emulateJSON</span>
@@ -42,7 +25,8 @@ unmodified Backbone code.</p></div></div><div class="code"><div class="wrapper">
     <span class="p">}</span>
     </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><hr />
 
-<h4 id="railsy-backbone">railsy_backbone</h4>
+<p>railsy_backbone (start) <br />
+<strong>Rails CSFR Integration</strong>  </p>
 
 <p>include the Rails CSRF token on HTTP PUTs/POSTs    </p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">noCSRF</span><span class="p">){</span>
       <span class="kd">var</span> <span class="nx">beforeSend</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">beforeSend</span><span class="p">;</span>
@@ -51,24 +35,46 @@ unmodified Backbone code.</p></div></div><div class="code"><div class="wrapper">
         <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">&#39;X-CSRF-Token&#39;</span><span class="p">,</span> <span class="nx">token</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">beforeSend</span><span class="p">)</span> <span class="k">return</span> <span class="nx">beforeSend</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
       <span class="p">};</span>
-    <span class="p">}</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><hr /></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Ensure that we have the appropriate request data.</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">model</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;create&#39;</span> <span class="o">||</span> <span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;update&#39;</span> <span class="o">||</span> <span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;patch&#39;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="p">}</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>railsy_backbone (end)</p>
+
+<hr /></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>Ensure that we have the appropriate request data.</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="nx">model</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;create&#39;</span> <span class="o">||</span> <span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;update&#39;</span> <span class="o">||</span> <span class="nx">method</span> <span class="o">===</span> <span class="s1">&#39;patch&#39;</span><span class="p">))</span> <span class="p">{</span>
       <span class="nx">params</span><span class="p">.</span><span class="nx">contentType</span> <span class="o">=</span> <span class="s1">&#39;application/json&#39;</span><span class="p">;</span>
       </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><hr />
 
-<h4 id="railsy-backbone">railsy_backbone</h4>
+<p>railsy_backbone (start) <br />
+<strong>Nested Model Attributes</strong>  </p>
 
-<p>If model defines <code>paramRoot</code>, then store model attributes within 
-<code>paramRoot</code> key-value pair. For example, book attributes (<code>title</code>, 
-<code>author</code>) are nested within <code>book</code> key-value pair,</p>
+<p>If Backbone.Model defines <code>paramRoot</code>, then store model attributes 
+within <code>paramRoot</code> key-value pair. For example, book attributes 
+(<code>title</code>, <code>author</code>) are nested within <code>book</code> key-value pair,</p>
 
-<pre><code>  HTTP POST Parameters: { "book" =&gt; { "title" =&gt; "the illiad", "author" =&gt; "home" }}
+<pre><code> var Book = Backbone.Model.extend({ 
+   url: '/books',
+   paramRoot: 'book' 
+ });
+
+ var book_instance = new Book({ 
+   title:  'the illiad', 
+   author: 'homer'
+ });
+</code></pre>
+
+<p>The resulting HTTP POST looks like this,</p>
+
+<pre><code> book_instance.sync();
+
+ Started POST "/books" for 127.0.0.1
+   Processing by BooksController#create as JSON
+   { "book" =&gt; { "title" =&gt; "the illiad", "author" =&gt; "home" } }
 </code></pre></div></div><div class="code"><div class="wrapper">      <span class="k">if</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">paramRoot</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">model_attributes</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="nx">model_attributes</span><span class="p">[</span><span class="nx">model</span><span class="p">.</span><span class="nx">paramRoot</span><span class="p">]</span> <span class="o">=</span> <span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(</span><span class="nx">options</span><span class="p">);</span>
         <span class="nx">params</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">attrs</span> <span class="o">||</span> <span class="nx">model_attributes</span> <span class="p">);</span>
       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>If model does not define a <code>paramRoot</code>, use the original Backbone 
 implementation</p></div></div><div class="code"><div class="wrapper">        <span class="nx">params</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">attrs</span> <span class="o">||</span> <span class="nx">model</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">);</span>
-      <span class="p">}</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><hr /></div></div><div class="code"><div class="wrapper">    <span class="p">}</span>
+      <span class="p">}</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>railsy_backbone (end)  </p>
+
+<hr /></div></div><div class="code"><div class="wrapper">    <span class="p">}</span>
     </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>For older servers, emulate JSON by encoding the request into an HTML-form.</p></div></div><div class="code"><div class="wrapper">    <span class="k">if</span> <span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">emulateJSON</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">params</span><span class="p">.</span><span class="nx">contentType</span> <span class="o">=</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">;</span>
       <span class="nx">params</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">data</span> <span class="o">?</span> <span class="p">{</span><span class="nx">model</span><span class="o">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">data</span><span class="p">}</span> <span class="o">:</span> <span class="p">{};</span>

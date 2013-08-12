@@ -47,8 +47,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                   "type": "heading",
                   "data": {
                     "level": 3,
-                    "title": "Works with Rails CSRF",
-                    "slug": "works-with-rails-csrf"
+                    "title": "Automatic Rails CSRF Integration",
+                    "slug": "automatic-rails-csrf-integration"
                   },
                   "depth": 3
                 }
@@ -65,8 +65,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Contributing",
-                "slug": "contributing"
+                "title": "Docs",
+                "slug": "docs"
+              },
+              "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Credits",
+                "slug": "credits"
               },
               "depth": 2
             }
@@ -97,8 +105,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 3,
-                "title": "Works with Rails CSRF",
-                "slug": "works-with-rails-csrf"
+                "title": "Automatic Rails CSRF Integration",
+                "slug": "automatic-rails-csrf-integration"
               },
               "depth": 3
             }
@@ -115,8 +123,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 2,
-            "title": "Contributing",
-            "slug": "contributing"
+            "title": "Docs",
+            "slug": "docs"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Credits",
+            "slug": "credits"
           },
           "depth": 2
         }
@@ -251,195 +267,13 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                       "singleLineComment": ["//"],
                       "name": "JavaScript"
                     },
-                    "sourcePath": "/Users/weston/git/railsy_backbone/vendor/assets/javascripts/backbone.js",
-                    "projectPath": "vendor/assets/javascripts/backbone.js",
-                    "targetPath": "vendor/assets/javascripts/backbone",
-                    "title": "backbone"
-                  },
-                  "depth": 4,
-                  "outline": [
-                    {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Initial Setup",
-                        "slug": "initial-setup"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.Events",
-                        "slug": "backboneevents"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.Model",
-                        "slug": "backbonemodel"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.Collection",
-                        "slug": "backbonecollection"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.View",
-                        "slug": "backboneview"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.sync",
-                        "slug": "backbonesync"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.Router",
-                        "slug": "backbonerouter"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Backbone.History",
-                        "slug": "backbonehistory"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Helpers",
-                        "slug": "helpers"
-                      },
-                      "depth": 2
-                    }
-                  ]
-                }, {
-                  "type": "file",
-                  "data": {
-                    "language": {
-                      "nameMatchers": [".js"],
-                      "pygmentsLexer": "javascript",
-                      "singleLineComment": ["//"],
-                      "name": "JavaScript"
-                    },
                     "sourcePath": "/Users/weston/git/railsy_backbone/vendor/assets/javascripts/railsy_backbone.sync.js",
                     "projectPath": "vendor/assets/javascripts/railsy_backbone.sync.js",
                     "targetPath": "vendor/assets/javascripts/railsy_backbone.sync",
                     "title": "railsy_backbone.sync"
                   },
                   "depth": 4,
-                  "outline": [
-                    {
-                      "type": "heading",
-                      "data": {
-                        "level": 4,
-                        "title": "railsy_backbone",
-                        "slug": "railsy-backbone"
-                      },
-                      "depth": 4
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 4,
-                        "title": "railsy_backbone",
-                        "slug": "railsy-backbone"
-                      },
-                      "depth": 4
-                    }
-                  ]
-                }, {
-                  "type": "file",
-                  "data": {
-                    "language": {
-                      "nameMatchers": [".js"],
-                      "pygmentsLexer": "javascript",
-                      "singleLineComment": ["//"],
-                      "name": "JavaScript"
-                    },
-                    "sourcePath": "/Users/weston/git/railsy_backbone/vendor/assets/javascripts/underscore.js",
-                    "projectPath": "vendor/assets/javascripts/underscore.js",
-                    "targetPath": "vendor/assets/javascripts/underscore",
-                    "title": "underscore"
-                  },
-                  "depth": 4,
-                  "outline": [
-                    {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Baseline setup",
-                        "slug": "baseline-setup"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Collection Functions",
-                        "slug": "collection-functions"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Array Functions",
-                        "slug": "array-functions"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Function (ahem) Functions",
-                        "slug": "function-ahem-functions"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Object Functions",
-                        "slug": "object-functions"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "Utility Functions",
-                        "slug": "utility-functions"
-                      },
-                      "depth": 2
-                    }, {
-                      "type": "heading",
-                      "data": {
-                        "level": 2,
-                        "title": "OOP",
-                        "slug": "oop"
-                      },
-                      "depth": 2
-                    }
-                  ]
+                  "outline": []
                 }
               ]
             }

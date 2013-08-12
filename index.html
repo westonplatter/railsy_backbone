@@ -5,6 +5,11 @@ Underscore 1.5.1</p>
 
 <h2 id="features">Features</h2>
 
+<ol>
+<li><a href="#nested-model-attributes">Nested Model Attributes</a></li>
+<li><a href="#automatic-rails-csrf-integration">Automatic Rails CSRF Integration</a></li>
+</ol>
+
 <h3 id="nested-model-attributes">Nested Model Attributes</h3>
 
 <p>Allows you to specify a namespace for model attributes by defining a  <code>paramRoot</code>  attribute. For example, </p>
@@ -29,9 +34,9 @@ book_instance.sync();
   Parameters: { "book" =&gt; { "title" =&gt; "the illiad", "author" =&gt; "homer" }}
 </code></pre>
 
-<h3 id="works-with-rails-csrf">Works with Rails CSRF</h3>
+<h3 id="automatic-rails-csrf-integration">Automatic Rails CSRF Integration</h3>
 
-<p>Sets the  <code>xhr.setRequestHeader</code>  to the Rails CSRF token in the header.</p>
+<p>Automatically handles the Rails <code>authenticity_token</code>. Or, more technically, sets the  <code>xhr.setRequestHeader</code>  to the Rails CSRF token supplied in the HTML <code>header</code> meta tag.</p>
 
 <p><br></p>
 
@@ -47,12 +52,12 @@ book_instance.sync();
 <pre><code>$ bundle
 </code></pre>
 
-<h2 id="contributing">Contributing</h2>
+<h2 id="docs">Docs</h2>
 
-<ol>
-<li>Fork it</li>
-<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
-<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
-<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
-<li>Create new Pull Request</li>
-</ol></div></div></div></div></body></html>
+<p><a href="http://westonplatter.github.io/railsy_backbone/">Here's the link to our docs</a>.</p>
+
+<p><strong>We really value clear communication</strong> (we're serious!). If you think something is missing in the docs, <strong>please</strong> let us know via a GitHub issue (<a href="https://github.com/westonplatter/railsy_backbone/issues">create issues here</a>), and we'll look at adding it. </p>
+
+<h2 id="credits">Credits</h2>
+
+<p>See MIT-LICENSE.</p></div></div></div></div></body></html>
