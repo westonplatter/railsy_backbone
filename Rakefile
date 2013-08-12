@@ -7,8 +7,6 @@ end
 
 require 'bundler/gem_tasks'
 
-task :default => :test
-
 namespace :backbone do
   desc "Download the latest released versions of underscore and backbone.js"
   task :download_latest do
@@ -29,3 +27,16 @@ namespace :backbone do
   end
 end
 
+
+# Check for the existence of an executable.
+def check(exec, name, url)
+  return unless `which #{exec}`.empty?
+  puts "#{name} not found.\nInstall it from #{url}"
+  exit
+end
+
+desc 'build the docco documentation'
+task :doc do
+  check 'groc', 'groc', 'https://github.com/nevir/groc'
+  system 'groc'
+end

@@ -1,10 +1,6 @@
 ( function($){
   
-  // Backbone.sync
-  // -------------
-
-  // Need to define the methodMap since it's called from within Backbone.sync
-  //
+  // Define `methodMap` since it's called from within Backbone.sync
   var methodMap = {
       'create': 'POST',
       'update': 'PUT',
@@ -18,29 +14,35 @@
   };
 
   // Overriding Backbone.sync to nest model attributes in within the paramRoot
-  // key-value JSON hashmap.
+  // key-value JSON hashmap. For example, when saving a new Model, 
+  //   
+  //  ```
+  //    var Book = Backbone.Model.extend({ 
+  //      url: '/books',
+  //      paramRoot: 'book'
+  //    });
   // 
-  // For example, when saving a new Model, 
+  //    var book_instance = new Book({ 
+  //      title:  'the illiad', 
+  //      author: 'homer'
+  //    });
   //
-  //   var Book = Backbone.Model.extend({ 
-  //     url: '/books',
-  //     paramRoot: 'book'
-  //   });
-  // 
-  //   var book_instance = new Book({ 
-  //     title:  'the illiad', 
-  //     author: 'homer'
-  //   });
-  //
-  //   book_instance.sync();
+  //    book_instance.sync();
+  //  ```
   //
   // This will cause the HTTP POST to look like this, 
   //
-  // Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
-  //   Processing by BooksController#create as JSON
-  //   Parameters: { "book" => { "title" => "the illiad", "author" => "homer" }}
+  // ```
+  //   Started POST "/books" for 127.0.0.1
+  //     Processing by BooksController#create as JSON
+  //     Parameters: { "book" => 
+  //                    { 
+  //                        "title" => "the illiad", 
+  //                        "author" => "homer"
+  //                    }
+  //                  }
+  // ```
   // 
-  //
   // Everything that is not explicitly called out as **railys_backbone** code, is
   // unmodified Backbone code.
   // 
@@ -61,9 +63,9 @@
       params.url = _.result(model, 'url') || urlError();
     }
     
-    // =========================================================================
-    // railsy_backbone
     // -------------------------------------------------------------------------
+    // #### railsy_backbone
+    // 
     // include the Rails CSRF token on HTTP PUTs/POSTs    
     // 
     if(!options.noCSRF){
@@ -76,35 +78,35 @@
         if (beforeSend) return beforeSend.apply(this, arguments);
       };
     }
-    // =========================================================================
+    // -------------------------------------------------------------------------
 
     // Ensure that we have the appropriate request data.
     if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
       params.contentType = 'application/json';
       
-      // =======================================================================
-      // railsy_backbone
       // -----------------------------------------------------------------------
-      // If model defines **paramRoot**, store model attributes within it. IE
+      // #### railsy_backbone
       // 
+      // If model defines `paramRoot`, then store model attributes within 
+      // `paramRoot` key-value pair. For example, book attributes (`title`, 
+      // `author`) are nested within `book` key-value pair,
+      // 
+      // ```
       //   HTTP POST Parameters: { "book" => { "title" => "the illiad", "author" => "home" }}
+      // ```
       // 
-      
       if(model.paramRoot) {
         var model_attributes = {}
         model_attributes[model.paramRoot] = model.toJSON(options);
         params.data = JSON.stringify(options.attrs || model_attributes );
       } else {
+        // If model does not define a `paramRoot`, use the original Backbone 
+        // implementation
         params.data = JSON.stringify(options.attrs || model.toJSON(options) );
       }
-      
-      // -------------------------------------------------------------------------
-      // original Backbone code
-      //
-      // params.data = JSON.stringify(options.attrs || model.toJSON(options) );
-      //
-      // =========================================================================
+      // -----------------------------------------------------------------------
     }
+    
 
     // For older servers, emulate JSON by encoding the request into an HTML-form.
     if (options.emulateJSON) {
