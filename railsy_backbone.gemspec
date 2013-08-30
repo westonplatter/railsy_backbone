@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RailsyBackbone::VERSION
   spec.authors       = ["Weston Platter"]
   spec.email         = ["westonplatter@gmail.com"]
-  spec.description   = %q{inspired by https://github.com/codebrew/backbone-rails + testing & updated Backbone}
-  spec.summary       = %q{inspired by https://github.com/codebrew/backbone-rails + testing & updated Backbone}
+  spec.description   = %q{Inspired by backbone-rails with testing & updated Backbone}
+  spec.summary       = %q{Inspired by backbone-rails with testing & updated Backbone}
   spec.homepage      = "http://github.com/westonplatter/railsy_backbone"
   spec.license       = "MIT"
 
@@ -21,15 +21,16 @@ Gem::Specification.new do |spec|
   
   spec.add_dependency 'railties',      '>= 3.1.0'
   spec.add_dependency 'coffee-script', '~> 2.2.0'
-  spec.add_dependency 'jquery-rails',  '~> 2.2.0'
+  spec.add_dependency 'jquery-rails',  '~> 3.0.0'
   spec.add_dependency 'ejs',           '~> 1.1.1'
   
-  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rails', '~> 3.2.0'
+  spec.add_development_dependency 'rails'
   spec.add_development_dependency 'sqlite3'
   spec.add_development_dependency 'sass'
   spec.add_development_dependency 'uglifier'
+  
   # spec.add_development_dependency 'mocha', '~> 0.10.3'
   # spec.add_development_dependency 'turn', '~> 0.8.3'
   # spec.add_development_dependency 'minitest', '~> 2.10.1'
