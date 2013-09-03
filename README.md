@@ -2,6 +2,8 @@
 Backbone 1.0.0  
 Underscore 1.5.1
 
+[![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
+
 ## Features
 
 1. [Nested Model Attributes](#nested-model-attributes)
