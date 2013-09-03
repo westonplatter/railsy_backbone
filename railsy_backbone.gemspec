@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description   = %q{Inspired by backbone-rails with testing & updated Backbone}
   s.summary       = %q{Inspired by backbone-rails with testing & updated Backbone}
   s.homepage      = "http://github.com/westonplatter/railsy_backbone"
-  s.license       = "MIT"
+  s.license       = "BSD-3"
 
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
