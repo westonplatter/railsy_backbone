@@ -16,7 +16,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
   
   test "Assert application coffeescript file is created" do
     run_generator
-    puts "backbone_path = #{backbone_path}"
+    
     assert_file "#{backbone_path}/dummy.js.coffee", /window\.Dummy/
   end
   
