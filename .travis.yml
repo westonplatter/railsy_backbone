@@ -7,3 +7,5 @@ notifications:
   email:
     recipients:
       - weston@think602.com
+
+before_script: bundle exec rake dummy:app
