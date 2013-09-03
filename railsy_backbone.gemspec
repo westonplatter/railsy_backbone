@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
   
-  s.files = Dir["lib/**/*"] + Dir["vendor/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["lib/**/*"] + Dir["vendor/**/*"] + ["LICENSE", "Rakefile", "README.md", "CHANGELOG.md"]
   
   s.add_dependency 'railties',      '>= 3.1.0'
   s.add_dependency 'coffee-script' #, '~> 2.2.0'
