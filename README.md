@@ -40,7 +40,7 @@ Automatically handles the Rails `authenticity_token`. Or, more technically, sets
 
 Add this line to your application's Gemfile:
 
-    gem 'railsy_backbone', github: 'westonplatter/railsy_backbone'
+    gem 'railsy_backbone', '~> 0.0.2'
 
 And then execute:
 
