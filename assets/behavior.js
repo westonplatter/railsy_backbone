@@ -138,6 +138,39 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         }
       ]
     }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".md"],
+          "commentsOnly": true,
+          "name": "Markdown"
+        },
+        "sourcePath": "/Users/weston/git/railsy_backbone/CHANGELOG.md",
+        "projectPath": "CHANGELOG.md",
+        "targetPath": "CHANGELOG",
+        "title": "CHANGELOG"
+      },
+      "depth": 1,
+      "outline": [
+        {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "0.0.2",
+            "slug": "002"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "0.0.1",
+            "slug": "001"
+          },
+          "depth": 2
+        }
+      ]
+    }, {
       "type": "folder",
       "data": {
         "path": "generators",
@@ -154,6 +187,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "depth": 2,
           "children": [
             {
+              "type": "file",
+              "data": {
+                "language": {
+                  "nameMatchers": [".rb", ".ru", ".gemspec"],
+                  "pygmentsLexer": "ruby",
+                  "singleLineComment": ["#"],
+                  "name": "Ruby"
+                },
+                "sourcePath": "/Users/weston/git/railsy_backbone/lib/generators/backbone/helpers.rb",
+                "projectPath": "lib/generators/backbone/helpers.rb",
+                "targetPath": "generators/backbone/helpers",
+                "title": "helpers"
+              },
+              "depth": 3,
+              "outline": []
+            }, {
               "type": "folder",
               "data": {
                 "path": "generators/backbone/install",
@@ -181,22 +230,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               ]
             }
           ]
-        }, {
-          "type": "file",
-          "data": {
-            "language": {
-              "nameMatchers": [".rb", ".ru", ".gemspec"],
-              "pygmentsLexer": "ruby",
-              "singleLineComment": ["#"],
-              "name": "Ruby"
-            },
-            "sourcePath": "/Users/weston/git/railsy_backbone/lib/generators/resource_helper.rb",
-            "projectPath": "lib/generators/resource_helper.rb",
-            "targetPath": "generators/resource_helper",
-            "title": "resource_helper"
-          },
-          "depth": 2,
-          "outline": []
         }
       ]
     }, {
@@ -259,6 +292,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "depth": 3,
               "children": [
                 {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".js"],
+                      "pygmentsLexer": "javascript",
+                      "singleLineComment": ["//"],
+                      "name": "JavaScript"
+                    },
+                    "sourcePath": "/Users/weston/git/railsy_backbone/vendor/assets/javascripts/railsy_backbone.datalink.js",
+                    "projectPath": "vendor/assets/javascripts/railsy_backbone.datalink.js",
+                    "targetPath": "vendor/assets/javascripts/railsy_backbone.datalink",
+                    "title": "railsy_backbone.datalink"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }, {
                   "type": "file",
                   "data": {
                     "language": {

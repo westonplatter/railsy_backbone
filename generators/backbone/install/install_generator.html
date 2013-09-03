@@ -1,18 +1,38 @@
-<!DOCTYPE html><html lang="en"><head><title>generators/backbone/install/install_generator</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="generators/backbone/install/install_generator"><meta name="groc-project-path" content="lib/generators/backbone/install/install_generator.rb"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/lib/generators/backbone/install/install_generator.rb">lib/generators/backbone/install/install_generator.rb</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><p>require 'generators/backbone/resource_helpers'</p></div></div><div class="code"><div class="wrapper"><span class="k">module</span> <span class="nn">Backbone</span>
-  <span class="k">module</span> <span class="nn">Generators</span>
-    <span class="k">class</span> <span class="nc">InstallGenerator</span> <span class="o">&lt;</span> <span class="ss">Rails</span><span class="p">:</span><span class="ss">:Generators</span><span class="o">::</span><span class="no">Base</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>include Backbone::Generators::ResourceHelpers</p>
+<!DOCTYPE html><html lang="en"><head><title>generators/backbone/install/install_generator</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="generators/backbone/install/install_generator"><meta name="groc-project-path" content="lib/generators/backbone/install/install_generator.rb"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/lib/generators/backbone/install/install_generator.rb">lib/generators/backbone/install/install_generator.rb</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="nb">require</span> <span class="s1">&#39;generators/backbone/helpers&#39;</span>
 
-<p>source<em>root File.expand</em>path("../templates", <strong>FILE</strong>)</p></div></div><div class="code"><div class="wrapper">      <span class="n">desc</span> <span class="s2">&quot;This generator installs backbone.js with a default folder layout in app/assets/javascripts/backbone&quot;</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>class<em>option :skip</em>git, :type => :boolean, :aliases => "-G", :default => false,
-:desc => "Skip Git ignores and keeps"</p></div></div><div class="code"><div class="wrapper">      <span class="k">def</span> <span class="nf">inject_backbone</span>
-        <span class="n">inject_into_file</span> <span class="s2">&quot;app/assets/javascripts/application.js&quot;</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="s2">&quot;//= require_tree&quot;</span> <span class="k">do</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>"//= require underscore\n//= require backbone\n//= require backbone<em>rails</em>sync\n//= require backbone<em>datalink\n//= require backbone/#{application</em>name.underscore}\n"</p></div></div><div class="code"><div class="wrapper">          <span class="s2">&quot;//= require underscore</span><span class="se">\n</span><span class="s2">//= require backbone</span><span class="se">\n</span><span class="s2">//= require railsy_backbone.sync&quot;</span>
+<span class="k">module</span> <span class="nn">Backbone</span>
+  <span class="k">module</span> <span class="nn">Generators</span>
+    <span class="k">class</span> <span class="nc">InstallGenerator</span> <span class="o">&lt;</span> <span class="ss">Rails</span><span class="p">:</span><span class="ss">:Generators</span><span class="o">::</span><span class="no">Base</span>
+      <span class="kp">include</span> <span class="ss">Backbone</span><span class="p">:</span><span class="ss">:Generators</span><span class="o">::</span><span class="no">Helpers</span>
+ 
+      <span class="n">source_root</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s2">&quot;../templates&quot;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+
+      <span class="n">desc</span> <span class="s2">&quot;This generator installs backbone.js with a default folder layout in app/assets/javascripts/backbone&quot;</span>
+
+      <span class="n">class_option</span> <span class="ss">:skip_git</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:boolean</span><span class="p">,</span> <span class="ss">:aliases</span> <span class="o">=&gt;</span> <span class="s2">&quot;-G&quot;</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span>
+                              <span class="ss">:desc</span> <span class="o">=&gt;</span> <span class="s2">&quot;Skip Git ignores and keeps&quot;</span>
+
+      <span class="k">def</span> <span class="nf">inject_backbone</span>
+        <span class="n">inject_into_file</span> <span class="s2">&quot;app/assets/javascripts/application.js&quot;</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="s2">&quot;//= require_tree&quot;</span> <span class="k">do</span>
+<span class="s2">&quot;//= require underscore</span>
+<span class="s2">//= require backbone</span>
+<span class="s2">//= require railsy_backbone.sync</span>
+<span class="s2">//= require railsy_backbone.datalink</span>
+<span class="s2">//= require backbone/</span><span class="si">#{</span><span class="n">application_name</span><span class="o">.</span><span class="n">underscore</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">end</span>
-      <span class="k">end</span></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>def create<em>dir</em>layout
-  %W{routers models views templates}.each do |dir|
-    empty<em>directory "app/assets/javascripts/backbone/#{dir}" 
-    create</em>file "app/assets/javascripts/backbone/#{dir}/.gitkeep" unless options[:skip_git]
-  end
-end</p></div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>def create<em>app</em>file
-  template "app.coffee", "app/assets/javascripts/backbone/#{application_name.underscore}.js.coffee"
-end</p></div></div><div class="code"><div class="wrapper">    <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="k">def</span> <span class="nf">create_dir_layout</span>
+        <span class="sx">%W{routers models views templates}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">dir</span><span class="o">|</span>
+          <span class="n">empty_directory</span> <span class="s2">&quot;app/assets/javascripts/backbone/</span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">&quot;</span> 
+          <span class="n">create_file</span> <span class="s2">&quot;app/assets/javascripts/backbone/</span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="s2">/.gitkeep&quot;</span> <span class="k">unless</span> <span class="n">options</span><span class="o">[</span><span class="ss">:skip_git</span><span class="o">]</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+
+      <span class="k">def</span> <span class="nf">create_app_file</span>
+        <span class="n">template</span> <span class="s2">&quot;app.coffee&quot;</span><span class="p">,</span> <span class="s2">&quot;app/assets/javascripts/backbone/</span><span class="si">#{</span><span class="n">application_name</span><span class="o">.</span><span class="n">underscore</span><span class="si">}</span><span class="s2">.js.coffee&quot;</span>
+      <span class="k">end</span>
+
+    <span class="k">end</span>
   <span class="k">end</span>
 <span class="k">end</span></div></div></div></div></body></html>
