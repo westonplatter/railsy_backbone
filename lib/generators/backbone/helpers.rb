@@ -1,6 +1,6 @@
 module Backbone
   module Generators
-    module ResourceHelpers
+    module Helpers
       
       def backbone_path
         "app/assets/javascripts/backbone"

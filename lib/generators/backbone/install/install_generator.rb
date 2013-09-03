@@ -1,10 +1,10 @@
-# require 'generators/backbone/resource_helpers'
+require 'generators/backbone/helpers'
 
 module Backbone
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      # include Backbone::Generators::ResourceHelpers
-# 
+      include Backbone::Generators::Helpers
+ 
       # source_root File.expand_path("../templates", __FILE__)
 
       desc "This generator installs backbone.js with a default folder layout in app/assets/javascripts/backbone"
