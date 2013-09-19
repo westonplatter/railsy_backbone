@@ -4,6 +4,8 @@ Underscore 1.5.1
 
 [![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
 
+Questions/Suggestions &nbsp; => &nbsp; [open a GitHub issue - 24 hr response time](https://github.com/westonplatter/railsy_backbone/issues/new)
+
 ## Features
 
 1. [Nested Model Attributes](#nested-model-attributes)
