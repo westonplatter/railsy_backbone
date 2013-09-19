@@ -1,5 +1,5 @@
 {
   "glob"    : ["lib/**/*.rb", "vendor/**/*.js", "README.md", "CHANGELOG.md"],
   "except"  : ["**/backbone.js", "**/underscore.js" ],
-  "github"  : false
+  "github"  : true
 }
