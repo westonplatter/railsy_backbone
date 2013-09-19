@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><title>generators/backbone/model/model_generator</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="generators/backbone/model/model_generator"><meta name="groc-project-path" content="lib/generators/backbone/model/model_generator.rb"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/lib/generators/backbone/model/model_generator.rb">lib/generators/backbone/model/model_generator.rb</a></div></div><div id="document"><div class="segment"><div class="code"><div class="wrapper"><span class="nb">require</span> <span class="s1">&#39;generators/backbone/helpers&#39;</span>
+
+<span class="k">module</span> <span class="nn">Backbone</span>
+  <span class="k">module</span> <span class="nn">Generators</span>
+    <span class="k">class</span> <span class="nc">ModelGenerator</span> <span class="o">&lt;</span> <span class="ss">Rails</span><span class="p">:</span><span class="ss">:Generators</span><span class="o">::</span><span class="no">NamedBase</span>
+      <span class="kp">include</span> <span class="ss">Backbone</span><span class="p">:</span><span class="ss">:Generators</span><span class="o">::</span><span class="no">Helpers</span>
+        
+      <span class="n">source_root</span> <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s2">&quot;../templates&quot;</span><span class="p">,</span> <span class="bp">__FILE__</span><span class="p">)</span>
+      <span class="n">desc</span> <span class="s2">&quot;This generator creates a backbone model&quot;</span>
+      
+      <span class="n">argument</span> <span class="ss">:attributes</span><span class="p">,</span> <span class="ss">type</span><span class="p">:</span> <span class="ss">:array</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="o">[]</span><span class="p">,</span> <span class="ss">banner</span><span class="p">:</span> <span class="s2">&quot;field:type field:type&quot;</span>
+    
+      <span class="k">def</span> <span class="nf">create_backbone_model</span>
+        <span class="n">template</span> <span class="s2">&quot;model.coffee&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">backbone_path</span><span class="si">}</span><span class="s2">/models/</span><span class="si">#{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">.js.coffee&quot;</span>
+      <span class="k">end</span>
+    
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></div></div></div></div></body></html>

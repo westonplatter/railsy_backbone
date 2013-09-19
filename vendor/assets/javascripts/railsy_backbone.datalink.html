@@ -1,26 +1,29 @@
 <!DOCTYPE html><html lang="en"><head><title>vendor/assets/javascripts/railsy_backbone.datalink</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content="../../../"><meta name="groc-document-path" content="vendor/assets/javascripts/railsy_backbone.datalink"><meta name="groc-project-path" content="vendor/assets/javascripts/railsy_backbone.datalink.js"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="../../../assets/style.css"><script type="text/javascript" src="../../../assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/vendor/assets/javascripts/railsy_backbone.datalink.js">vendor/assets/javascripts/railsy_backbone.datalink.js</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><p><strong>NOTE:</strong> only overriding Backbone when <code>railsy_backbone (start) ... (end)</code> 
 is explicitly called out.</p>
 
-<p>Before addign this to the repo, I'd like to enable a configuration value to 
-turn this feature on and off</p>
+<p>TODO
+Enable a configuration value to turn this feature on/off</p></div></div><div class="code"><div class="wrapper"><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+  </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p><code>$.extend</code> enables us to chain functions onto jQuery selected DOM elements.
+For example, </p>
 
-<p>(function($) {
-  return $.extend($.fn, {
-    backboneLink: function(model) {
-      return $(this).find(":input").each(function() {
-        var el, name;
-        el = $(this);
-        name = el.attr("name");
-        model.bind("change:" + name, function() {
-          return el.val(model.get(name));
-        });
-        return $(this).bind("change", function() {
-          var attrs;
-          el = $(this);
-          attrs = {};
-          attrs[el.attr("name")] = el.val();
-          return model.set(attrs);
-        });
-      });
-    }
-  });</p></div></div><div class="code"><div class="wrapper"><span class="c1">// })(jQuery);</span></div></div></div></div></body></html>
+<pre><code>this.$("form").backboneLink(@model)
+</code></pre></div></div><div class="code"><div class="wrapper">  <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">,</span> <span class="p">{</span>
+    </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>name function <code>backboneLine</code></p></div></div><div class="code"><div class="wrapper">    <span class="nx">backboneLink</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">model</span><span class="p">)</span> <span class="p">{</span>
+      </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>only target HTML input elements</p></div></div><div class="code"><div class="wrapper">      <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;:input&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">el</span><span class="p">,</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>select the HTML input <code>name</code> attribute</p></div></div><div class="code"><div class="wrapper">        <span class="nx">name</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">);</span>
+        </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>TODO describe what this does</p></div></div><div class="code"><div class="wrapper">        <span class="nx">model</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change:&quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">val</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">name</span><span class="p">));</span>
+        <span class="p">});</span>
+        </div></div></div><div class="segment"><div class="comments"><div class="wrapper"><p>re-set model specifical attribute when changed</p></div></div><div class="code"><div class="wrapper">        <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="kd">var</span> <span class="nx">attrs</span><span class="p">;</span>
+          <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+          <span class="nx">attrs</span> <span class="o">=</span> <span class="p">{};</span>
+          <span class="nx">attrs</span><span class="p">[</span><span class="nx">el</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+          <span class="k">return</span> <span class="nx">model</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">attrs</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span></div></div></div></div></body></html>

@@ -156,6 +156,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 2,
+            "title": "0.0.3",
+            "slug": "003"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
             "title": "0.0.2",
             "slug": "002"
           },
@@ -223,6 +231,84 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                     "projectPath": "lib/generators/backbone/install/install_generator.rb",
                     "targetPath": "generators/backbone/install/install_generator",
                     "title": "install_generator"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }
+              ]
+            }, {
+              "type": "folder",
+              "data": {
+                "path": "generators/backbone/model",
+                "title": "model"
+              },
+              "depth": 3,
+              "children": [
+                {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".rb", ".ru", ".gemspec"],
+                      "pygmentsLexer": "ruby",
+                      "singleLineComment": ["#"],
+                      "name": "Ruby"
+                    },
+                    "sourcePath": "/Users/weston/git/railsy_backbone/lib/generators/backbone/model/model_generator.rb",
+                    "projectPath": "lib/generators/backbone/model/model_generator.rb",
+                    "targetPath": "generators/backbone/model/model_generator",
+                    "title": "model_generator"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }
+              ]
+            }, {
+              "type": "folder",
+              "data": {
+                "path": "generators/backbone/router",
+                "title": "router"
+              },
+              "depth": 3,
+              "children": [
+                {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".rb", ".ru", ".gemspec"],
+                      "pygmentsLexer": "ruby",
+                      "singleLineComment": ["#"],
+                      "name": "Ruby"
+                    },
+                    "sourcePath": "/Users/weston/git/railsy_backbone/lib/generators/backbone/router/router_generator.rb",
+                    "projectPath": "lib/generators/backbone/router/router_generator.rb",
+                    "targetPath": "generators/backbone/router/router_generator",
+                    "title": "router_generator"
+                  },
+                  "depth": 4,
+                  "outline": []
+                }
+              ]
+            }, {
+              "type": "folder",
+              "data": {
+                "path": "generators/backbone/scaffold",
+                "title": "scaffold"
+              },
+              "depth": 3,
+              "children": [
+                {
+                  "type": "file",
+                  "data": {
+                    "language": {
+                      "nameMatchers": [".rb", ".ru", ".gemspec"],
+                      "pygmentsLexer": "ruby",
+                      "singleLineComment": ["#"],
+                      "name": "Ruby"
+                    },
+                    "sourcePath": "/Users/weston/git/railsy_backbone/lib/generators/backbone/scaffold/scaffold_generator.rb",
+                    "projectPath": "lib/generators/backbone/scaffold/scaffold_generator.rb",
+                    "targetPath": "generators/backbone/scaffold/scaffold_generator",
+                    "title": "scaffold_generator"
                   },
                   "depth": 4,
                   "outline": []
