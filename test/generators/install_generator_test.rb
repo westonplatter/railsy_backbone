@@ -52,7 +52,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     end
   end
   
-  test "Assert application.js require underscore, backbone and backbone_rails_sync and dummy.js" do
+  test "Assert application.js require underscore, railsy_backbone and railsy_backbone.sync and dummy.js" do
     run_generator
     
     assert_file "app/assets/javascripts/application.js" do |application|
@@ -62,7 +62,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
         assert_match /#{require}/, application
       end
     end
-  end  
+  end
   
   def fixture(file)
     File.expand_path("../fixtures/#{file}", File.dirname(__FILE__))

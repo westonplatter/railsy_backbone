@@ -4,21 +4,36 @@ module Backbone
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Backbone::Generators::Helpers
- 
+      
       source_root File.expand_path("../templates", __FILE__)
 
       desc "This generator installs backbone.js with a default folder layout in app/assets/javascripts/backbone"
 
-      class_option :skip_git, :type => :boolean, :aliases => "-G", :default => false,
-                              :desc => "Skip Git ignores and keeps"
+      class_option :skip_git, type: :boolean, 
+                              aliases: '-G', 
+                              default: false,
+                              desc: 'Skip Git ignores and keeps'
 
       def inject_backbone
-        inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
-"//= require underscore
-//= require backbone
-//= require railsy_backbone.sync
-//= require railsy_backbone.datalink
-//= require backbone/#{application_name.underscore}\n"
+        # when Rails app has application.js        
+        if File.exists? "#{Rails.root}/app/assets/javascripts/application.js"
+          inject_into_file "app/assets/javascripts/application.js", before: "//= require_tree" do
+            result =  "//= require underscore\n"
+            result += "//= require backbone\n"
+            result += "//= require railsy_backbone.sync\n"
+            result += "//= require railsy_backbone.datalink\n"
+            result += "//= require backbone/#{application_name.underscore}\n"
+          end
+        # when Rails app has application.js.coffee
+        elsif File.exists? "#{Rails.root}/app/assets/javascripts/application.js.coffee"
+          inject_into_file "app/assets/javascripts/application.js.coffee", before: '#= require_tree' do
+            result =  "#= require underscore\n"
+            result += "#= require backbone\n"
+            result += "#= require railsy_backbone.sync\n"
+            result += "#= require railsy_backbone.datalink\n"
+            result += "#= require backbone/#{application_name.underscore}\n"
+            result
+          end
         end
       end
 

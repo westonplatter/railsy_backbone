@@ -1,3 +1,8 @@
+## next
+
+- account for application.js and application.js.coffee Javascript require differences
+  (Nicholas Zaillian - https://github.com/nzaillian/backbone-rails/commit/24fb49d4c941821307ccdec7160ec218e7475706)
+
 ## 0.0.3
 
 - copied Backbone model generator from backbone-rails
