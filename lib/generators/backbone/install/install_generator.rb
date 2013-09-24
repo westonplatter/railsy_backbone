@@ -18,20 +18,21 @@ module Backbone
         # when Rails app has application.js        
         if File.exists? "#{Rails.root}/app/assets/javascripts/application.js"
           inject_into_file "app/assets/javascripts/application.js", before: "//= require_tree" do
-            "//= require underscore\n"
-            "//= require backbone\n"
-            "//= require railsy_backbone.sync\n"
-            "//= require railsy_backbone.datalink\n"
-            "//= require backbone/#{application_name.underscore}\n"
+            result =  "//= require underscore\n"
+            result += "//= require backbone\n"
+            result += "//= require railsy_backbone.sync\n"
+            result += "//= require railsy_backbone.datalink\n"
+            result += "//= require backbone/#{application_name.underscore}\n"
           end
         # when Rails app has application.js.coffee
         elsif File.exists? "#{Rails.root}/app/assets/javascripts/application.js.coffee"
           inject_into_file "app/assets/javascripts/application.js.coffee", before: '#= require_tree' do
-            "#= require underscore\n"
-            "#= require backbone\n"
-            "#= require railsy_backbone.sync\n"
-            "#= require railsy_backbone.datalink\n"
-            "#= require backbone/#{application_name.underscore}\n"
+            result =  "#= require underscore\n"
+            result += "#= require backbone\n"
+            result += "#= require railsy_backbone.sync\n"
+            result += "#= require railsy_backbone.datalink\n"
+            result += "#= require backbone/#{application_name.underscore}\n"
+            result
           end
         end
       end
