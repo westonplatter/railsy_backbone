@@ -118,7 +118,8 @@ Automatically handles the Rails `authenticity_token`. Or, more technically, sets
 
 [Here's the link to our docs](http://westonplatter.github.io/railsy_backbone/).
 
-__We really value clear communication__ (we're serious!). If you think something is missing in the docs, __please__ let us know via a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and we'll look at adding it. 
+__I really value clear communication__ (I'm serious!). If you think something is missing in the docs, __please__ let me know via a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and I'll look at adding it. 
+
 
 
 ## Credits
