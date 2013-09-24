@@ -4,13 +4,15 @@ module Backbone
   module Generators
     class InstallGenerator < Rails::Generators::Base
       include Backbone::Generators::Helpers
- 
+      
       source_root File.expand_path("../templates", __FILE__)
 
       desc "This generator installs backbone.js with a default folder layout in app/assets/javascripts/backbone"
 
-      class_option :skip_git, :type => :boolean, :aliases => "-G", :default => false,
-                              :desc => "Skip Git ignores and keeps"
+      class_option :skip_git, type: :boolean, 
+                              aliases: '-G', 
+                              default: false,
+                              desc: 'Skip Git ignores and keeps'
 
       def inject_backbone
         # when Rails app has application.js        
@@ -21,7 +23,7 @@ module Backbone
             "//= require railsy_backbone.sync\n"
             "//= require railsy_backbone.datalink\n"
             "//= require backbone/#{application_name.underscore}\n"
-        end
+          end
         # when Rails app has application.js.coffee
         elsif File.exists? "#{Rails.root}/app/assets/javascripts/application.js.coffee"
           inject_into_file "app/assets/javascripts/application.js.coffee", before: '#= require_tree' do
