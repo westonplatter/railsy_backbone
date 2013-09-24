@@ -55,5 +55,8 @@ And then execute:
 __We really value clear communication__ (we're serious!). If you think something is missing in the docs, __please__ let us know via a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and we'll look at adding it. 
 
 
+## Contributions
+[Nicholas Zaillian](https://github.com/nzaillian)  
+
 ## Credits
 See LICENSE
