@@ -29,7 +29,7 @@
           return el.val(model.get(name));
         });
         
-        // re-set model specifical attribute when changed
+        // re-set model's specific attribute when changed
         return $(this).bind("change", function() {
           var attrs;
           el = $(this);
