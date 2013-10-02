@@ -85,7 +85,7 @@
       // 
       //      Started POST "/books" for 127.0.0.1
       //        Processing by BooksController#create as JSON
-      //        { "book" => { "title" => "the illiad", "author" => "home" } }
+      //        { "book" => { "title" => "the illiad", "author" => "home", "id" => 1} }
       // 
       if(model.paramRoot) {        
         var model_attributes = {}
