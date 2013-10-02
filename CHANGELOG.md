@@ -1,9 +1,18 @@
 ## next
 
-- account for application.js and application.js.coffee Javascript require differences
+## 0.0.4
+
+- Remove Rails unofficially reserved `created_at` and `updated_at` so they're 
+  included in HTTP PUT/PATCH request.
+  (westonplatter)
+  
+- Finished docs for `railsy_backbone.sync`.
+  (westonplatter)
+
+- Account for application.js and application.js.coffee Javascript require differences.
   (Nicholas Zaillian - https://github.com/nzaillian/backbone-rails/commit/24fb49d4c941821307ccdec7160ec218e7475706)
   
-- added install instructions to README
+- Added install instructions to README.
   (westonplatter)
 
 
