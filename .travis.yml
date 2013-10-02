@@ -11,4 +11,5 @@ notifications:
     on_success: [change]
     on_failure: [always]
 
-before_script: bundle exec rake dummy:app
+before_script: 
+  - DUMMY_APP_PATH=test/dummy rake dummy:app

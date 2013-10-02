@@ -85,15 +85,26 @@
       // 
       //      Started POST "/books" for 127.0.0.1
       //        Processing by BooksController#create as JSON
-      //        { "book" => { "title" => "the illiad", "author" => "home" } }
+      //        { "book" => { "title" => "the illiad", "author" => "home", "id" => 1} }
       // 
-      if(model.paramRoot) {
+      if(model.paramRoot) {        
         var model_attributes = {}
-        model_attributes[model.paramRoot] = model.toJSON(options);
-        params.data = JSON.stringify(options.attrs || model_attributes );
+        
+        // Store model instance in JSON format.
+        var attrs = model.toJSON(options);
+        
+        // Remove Rails unofficially reserved `created_at` and `updated_at` so 
+        // they're included in HTTP PUT/PATCH request.
+        delete attrs["created_at"];
+        delete attrs["updated_at"];
+        
+        // Nest model attributes within model's `paramRoot` key-value pair.
+        model_attributes[model.paramRoot] = attrs;
+        
+        params.data = JSON.stringify(options.attrs || model_attributes);
       } else {
         // If model does not define a `paramRoot`, use the original Backbone 
-        // implementation
+        // implementation.
         params.data = JSON.stringify(options.attrs || model.toJSON(options) );
       }
       // railsy_backbone (end)  
