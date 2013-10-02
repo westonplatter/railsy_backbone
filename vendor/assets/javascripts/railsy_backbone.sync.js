@@ -104,7 +104,7 @@
         params.data = JSON.stringify(options.attrs || model_attributes);
       } else {
         // If model does not define a `paramRoot`, use the original Backbone 
-        // implementation
+        // implementation.
         params.data = JSON.stringify(options.attrs || model.toJSON(options) );
       }
       // railsy_backbone (end)  
