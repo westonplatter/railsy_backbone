@@ -105,9 +105,13 @@ Allows you to specify a namespace for model attributes by defining a  ```paramRo
 
 This will cause the HTTP POST to look like this, 
 
-    Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
+    Started POST "/books" for 127.0.0.1
       Processing by BooksController#create as JSON
-      Parameters: { "book" => { "title" => "the illiad", "author" => "homer" }}
+      Parameters: { "book" => { 
+        "title" => "the illiad", 
+        "author" => "homer", 
+        "id" => 1}
+      }
 
 
 ### Automatic Rails CSRF Integration
