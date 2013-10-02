@@ -27,7 +27,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
-For code pulled from https://github.com/codebrew/backbone-rails
+For code pulled from:
+https://github.com/codebrew/backbone-rails
+
+As of:
+https://github.com/codebrew/backbone-rails/commit/a49f2ea65e1d70d206f6608bd405fb1968f6d070
 
 Copyright 2011 Ryan Fitzgerald
 
