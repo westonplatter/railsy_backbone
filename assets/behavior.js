@@ -30,6 +30,41 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
+                "title": "Rails Setup",
+                "slug": "rails-setup"
+              },
+              "depth": 2,
+              "children": [
+                {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Install",
+                    "slug": "install"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Generators",
+                    "slug": "generators"
+                  },
+                  "depth": 3
+                }, {
+                  "type": "heading",
+                  "data": {
+                    "level": 3,
+                    "title": "Example Usage",
+                    "slug": "example-usage"
+                  },
+                  "depth": 3
+                }
+              ]
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
                 "title": "Features",
                 "slug": "features"
               },
@@ -57,16 +92,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Installation",
-                "slug": "installation"
+                "title": "Docs",
+                "slug": "docs"
               },
               "depth": 2
             }, {
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Docs",
-                "slug": "docs"
+                "title": "Contributions",
+                "slug": "contributions"
               },
               "depth": 2
             }, {
@@ -85,6 +120,41 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
       "depth": 1,
       "outline": [
         {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Rails Setup",
+            "slug": "rails-setup"
+          },
+          "depth": 2,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Install",
+                "slug": "install"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Generators",
+                "slug": "generators"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Example Usage",
+                "slug": "example-usage"
+              },
+              "depth": 3
+            }
+          ]
+        }, {
           "type": "heading",
           "data": {
             "level": 2,
@@ -115,16 +185,16 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 2,
-            "title": "Installation",
-            "slug": "installation"
+            "title": "Docs",
+            "slug": "docs"
           },
           "depth": 2
         }, {
           "type": "heading",
           "data": {
             "level": 2,
-            "title": "Docs",
-            "slug": "docs"
+            "title": "Contributions",
+            "slug": "contributions"
           },
           "depth": 2
         }, {
@@ -153,6 +223,22 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
       "depth": 1,
       "outline": [
         {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "next",
+            "slug": "next"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "0.0.4",
+            "slug": "004"
+          },
+          "depth": 2
+        }, {
           "type": "heading",
           "data": {
             "level": 2,

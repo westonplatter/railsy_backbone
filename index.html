@@ -5,6 +5,93 @@ Underscore 1.5.1</p>
 
 <p><a href="https://travis-ci.org/westonplatter/railsy_backbone"><img src="https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master" alt="Build Status" title="" /></a></p>
 
+<p>Questions/Suggestions &nbsp; => &nbsp; <a href="https://github.com/westonplatter/railsy_backbone/issues/new">open a GitHub issue - 24 hr response time</a></p>
+
+<h2 id="rails-setup">Rails Setup</h2>
+
+<h3 id="install">Install</h3>
+
+<p>Add this line to Gemfile,</p>
+
+<pre><code>gem 'railsy_backbone'
+</code></pre>
+
+<p>And then,</p>
+
+<pre><code>$ bundle install
+$ rails g backbone:install
+</code></pre>
+
+<p>This requires <code>underscore</code>, <code>backbone</code>, and JS customizations to make Backbone play nice with Rails (see Javscript files with <code>rails_backbone.</code> prefix regarding what changed).</p>
+
+<pre><code>//= require jquery
+//= require jquery_ujs
+//= require underscore
+//= require backbone
+//= require railsy_backbone.sync
+//= require railsy_backbone.datalink
+//= require backbone/&lt;your_application_name_here&gt;
+//= require_tree .
+</code></pre>
+
+<h3 id="generators">Generators</h3>
+
+<p>Rails Install <br />
+Backbone Model <br />
+Backbone Router <br />
+Backbone Scaffold  </p>
+
+<h3 id="example-usage">Example Usage</h3>
+
+<p>Create new rails app, </p>
+
+<pre><code>rails new library
+cd library
+</code></pre>
+
+<p>Install <code>railsy_backbone</code>,</p>
+
+<pre><code># add railsy_backbone to Gemfile
+bundle install
+rails g backbone:install
+</code></pre>
+
+<p>Generate a standard Rails scaffold,</p>
+
+<pre><code>rails g scaffold Book title:string author:string
+rake db:migrate
+</code></pre>
+
+<p>Generate a <code>Backbone</code> scaffold, </p>
+
+<pre><code>rails g backbone:scaffold Book title:string author:string
+</code></pre>
+
+<p>Edit <code>books/index.html</code> to execute actions through the Backbone scaffold UI rather than routing to different pages. </p>
+
+<pre><code>### ERB
+
+&lt;div id="books"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+  $(function() {
+    window.router = new Library.Routers.BooksRouter({books: &lt;%= @books.to_json.html_safe -%&gt;});
+    Backbone.history.start();
+  });
+&lt;/script&gt;
+
+
+### HAML
+
+#books
+
+:javascript
+  $(function() {
+    window.router = new Library.Routers.BooksRouter({books: #{@books.to_json.html_safe}});
+    Backbone.history.start();
+  });
+</code></pre>
+
 <h2 id="features">Features</h2>
 
 <ol>
@@ -31,34 +118,28 @@ book_instance.sync();
 
 <p>This will cause the HTTP POST to look like this, </p>
 
-<pre><code>Started POST "/books" for 127.0.0.1 at 2013-08-03 18:08:56 -0600
+<pre><code>Started POST "/books" for 127.0.0.1
   Processing by BooksController#create as JSON
-  Parameters: { "book" =&gt; { "title" =&gt; "the illiad", "author" =&gt; "homer" }}
+  Parameters: { "book" =&gt; { 
+    "title" =&gt; "the illiad", 
+    "author" =&gt; "homer", 
+    "id" =&gt; 1}
+  }
 </code></pre>
 
 <h3 id="automatic-rails-csrf-integration">Automatic Rails CSRF Integration</h3>
 
 <p>Automatically handles the Rails <code>authenticity_token</code>. Or, more technically, sets the  <code>xhr.setRequestHeader</code>  to the Rails CSRF token supplied in the HTML <code>header</code> meta tag.</p>
 
-<p><br></p>
-
-<h2 id="installation">Installation</h2>
-
-<p>Add this line to your application's Gemfile:</p>
-
-<pre><code>gem 'railsy_backbone', '~&gt; 0.0.3'
-</code></pre>
-
-<p>And then execute:</p>
-
-<pre><code>$ bundle
-</code></pre>
-
 <h2 id="docs">Docs</h2>
 
 <p><a href="http://westonplatter.github.io/railsy_backbone/">Here's the link to our docs</a>.</p>
 
-<p><strong>We really value clear communication</strong> (we're serious!). If you think something is missing in the docs, <strong>please</strong> let us know via a GitHub issue (<a href="https://github.com/westonplatter/railsy_backbone/issues">create issues here</a>), and we'll look at adding it. </p>
+<p><strong>I really value clear communication</strong> (I'm serious!). If you think something is missing in the docs, <strong>please</strong> let me know via a GitHub issue (<a href="https://github.com/westonplatter/railsy_backbone/issues">create issues here</a>), and I'll look at adding it. </p>
+
+<h2 id="contributions">Contributions</h2>
+
+<p><a href="https://github.com/nzaillian">Nicholas Zaillian</a>  </p>
 
 <h2 id="credits">Credits</h2>
 
