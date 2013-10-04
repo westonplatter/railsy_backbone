@@ -21,6 +21,8 @@ And then,
     
 This requires `underscore`, `backbone`, and JS customizations to make Backbone play nice with Rails (see Javscript files with `rails_backbone.` prefix regarding what changed).
 
+These will be added to your `app/assets/javascripts/application.js`:
+
     //= require jquery
     //= require jquery_ujs
     //= require underscore
@@ -31,10 +33,10 @@ This requires `underscore`, `backbone`, and JS customizations to make Backbone p
     //= require_tree .
 
 ### Generators
-Rails Install  
-Backbone Model  
-Backbone Router  
-Backbone Scaffold  
+Rails Install  `$ rails g backbone:install`  
+Backbone Model `$ rails g backbone:model`  
+Backbone Router `$ rails g backbone:router`  
+Backbone Scaffold `$ rails g backbone:scaffold`  
 
 ### Example Usage      
 
