@@ -33,4 +33,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'minitest'
   s.add_development_dependency 'rails-dummy'
   s.add_development_dependency 'mocha'
+  s.add_development_dependency 'capybara'
+  s.add_development_dependency 'launchy'
 end
