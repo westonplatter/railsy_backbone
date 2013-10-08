@@ -1,10 +1,33 @@
-# RailsyBackbone
+# railsy_backbone
 Backbone 1.0.0  
 Underscore 1.5.1
 
 [![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
 
-Questions/Suggestions &nbsp; => &nbsp; [open a GitHub issue - 24 hr response time](https://github.com/westonplatter/railsy_backbone/issues/new)
+A clone of [codebrew/backbone-rails](https://github.com/codebrew/backbone-rails) with updated Backbone, Underscore, and jquery-rails versions.
+
+Provides Backbone & Underscore files and modifies Backbone to:  
+- include the Rails authenticity token in HTTP requests  
+- nest model attributes within the declared &nbsp; `paramRoot` &nbsp;, EG, 
+
+    var Book = Backbone.Model.extend({ 
+      url: '/books',
+      paramRoot: 'book'
+    });
+
+    var book_instance = new Book({ 
+      title:  'the illiad', 
+      author: 'homer'
+    });
+
+    book_instance.sync();
+
+This will cause the resulting HTTP POST to be,
+
+    Started POST "/books" for 127.0.0.1 ...
+      Processing by BooksController#create as JSON
+      Parameters: { "book" => {  "title" => "the illiad",  "author" => "homer", "id" => 1 } }
+
 
 ## Rails Setup
 
@@ -19,7 +42,9 @@ And then,
     $ bundle install
     $ rails g backbone:install
     
-This requires `underscore`, `backbone`, and JS customizations to make Backbone play nice with Rails (see Javscript files with `rails_backbone.` prefix regarding what changed).
+This requires Backbone, Underscore, and the Backbone modifications to implement
+the Rails authenticity token and nesting model attributes in the paramsRoot 
+(see Javscript files with the `railsy_backbone.` prefix for details).
 
 These will be added to your `app/assets/javascripts/application.js`:
 
@@ -29,7 +54,7 @@ These will be added to your `app/assets/javascripts/application.js`:
     //= require backbone
     //= require railsy_backbone.sync
     //= require railsy_backbone.datalink
-    //= require backbone/<your_application_name_here>
+    //= require backbone/<your_rails_application_name>
     //= require_tree .
 
 ### Generators
@@ -62,7 +87,7 @@ Generate a `Backbone` scaffold,
     
 Edit `books/index.html` to execute actions through the Backbone scaffold UI rather than routing to different pages. 
     
-    ### ERB
+If you're using ERB, `index.html.erb`
     
     <div id="books"></div>
 
@@ -74,7 +99,7 @@ Edit `books/index.html` to execute actions through the Backbone scaffold UI rath
     </script>
     
     
-    ### HAML
+Or HAML, `index.html.haml`
     
     #books
     
@@ -85,51 +110,17 @@ Edit `books/index.html` to execute actions through the Backbone scaffold UI rath
       });
 
 
-## Features
-
-1. [Nested Model Attributes](#nested-model-attributes)
-2. [Automatic Rails CSRF Integration](#automatic-rails-csrf-integration)
-
-### Nested Model Attributes
-Allows you to specify a namespace for model attributes by defining a  ```paramRoot```  attribute. For example, 
-
-    var Book = Backbone.Model.extend({ 
-      url: '/books',
-      paramRoot: 'book'
-    });
-
-    var book_instance = new Book({ 
-      title:  'the illiad', 
-      author: 'homer'
-    });
-
-    book_instance.sync();
-
-This will cause the HTTP POST to look like this, 
-
-    Started POST "/books" for 127.0.0.1
-      Processing by BooksController#create as JSON
-      Parameters: { "book" => { 
-        "title" => "the illiad", 
-        "author" => "homer", 
-        "id" => 1}
-      }
-
-
-### Automatic Rails CSRF Integration
-Automatically handles the Rails `authenticity_token`. Or, more technically, sets the  `xhr.setRequestHeader`  to the Rails CSRF token supplied in the HTML `header` meta tag.
-
-
 ## Docs
 
-[Here's the link to our docs](http://westonplatter.github.io/railsy_backbone/).
+[Link to the docs](http://westonplatter.github.io/railsy_backbone/).
 
-__I really value clear communication__ (I'm serious!). If you think something is missing in the docs, __please__ let me know via a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and I'll look at adding it. 
+I value clear communication __(I'm serious!)__. If you think something is missing in the docs, __please__ open a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and I'd love to add it if it makes sense.
 
+## Contributors
+[These awesome people](https://github.com/westonplatter/railsy_backbone/graphs/contributors) infused their awesome talent in this project.
 
+## Inspiration
+Inspired by and copied from Ryan Fitzgerald's [codebrew/backbone-rails](https://github.com/codebrew/backbone-rails).
 
-## Contributions
-[Nicholas Zaillian](https://github.com/nzaillian)  
-
-## Credits
+## License
 See LICENSE
