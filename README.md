@@ -10,24 +10,27 @@ Provides Backbone & Underscore files and modifies Backbone to:
 - include the Rails authenticity token in HTTP requests  
 - nest model attributes within the declared &nbsp; `paramRoot` &nbsp;, EG, 
 
-    var Book = Backbone.Model.extend({ 
-      url: '/books',
-      paramRoot: 'book'
-    });
+```js
+var Book = Backbone.Model.extend({ 
+  url: '/books',
+  paramRoot: 'book'
+});
 
-    var book_instance = new Book({ 
-      title:  'the illiad', 
-      author: 'homer'
-    });
+var book_instance = new Book({ 
+  title:  'the illiad', 
+  author: 'homer'
+});
 
-    book_instance.sync();
+book_instance.sync();
+```
 
 This will cause the resulting HTTP POST to be,
 
-    Started POST "/books" for 127.0.0.1 ...
-      Processing by BooksController#create as JSON
-      Parameters: { "book" => {  "title" => "the illiad",  "author" => "homer", "id" => 1 } }
-
+```sh
+Started POST "/books" for 127.0.0.1 ...
+  Processing by BooksController#create as JSON
+  Parameters: { "book" => {  "title" => "the illiad",  "author" => "homer", "id" => 1 } }
+```
 
 ## Rails Setup
 
@@ -57,8 +60,7 @@ These will be added to your `app/assets/javascripts/application.js`:
     //= require backbone/<your_rails_application_name>
     //= require_tree .
 
-### Generators
-Rails Install  `$ rails g backbone:install`  
+### Generators  
 Backbone Model `$ rails g backbone:model`  
 Backbone Router `$ rails g backbone:router`  
 Backbone Scaffold `$ rails g backbone:scaffold`  
@@ -111,7 +113,6 @@ Or HAML, `index.html.haml`
 
 
 ## Docs
-
 [Link to the docs](http://westonplatter.github.io/railsy_backbone/).
 
 I value clear communication __(I'm serious!)__. If you think something is missing in the docs, __please__ open a GitHub issue ([create issues here](https://github.com/westonplatter/railsy_backbone/issues)), and I'd love to add it if it makes sense.
@@ -119,7 +120,7 @@ I value clear communication __(I'm serious!)__. If you think something is missin
 ## Contributors
 [These awesome people](https://github.com/westonplatter/railsy_backbone/graphs/contributors) infused their awesome talent in this project.
 
-## Inspiration
+## Credits
 Inspired by and copied from Ryan Fitzgerald's [codebrew/backbone-rails](https://github.com/codebrew/backbone-rails).
 
 ## License
