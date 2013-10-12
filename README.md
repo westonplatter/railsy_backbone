@@ -1,6 +1,6 @@
 # railsy_backbone
 
-[![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
+[![Gem Version](https://badge.fury.io/rb/railsy_backbone.png)](http://badge.fury.io/rb/railsy_backbone) [![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
 
 A clone of [codebrew/backbone-rails](https://github.com/codebrew/backbone-rails) with updated Backbone, Underscore, and jquery-rails versions.
 
