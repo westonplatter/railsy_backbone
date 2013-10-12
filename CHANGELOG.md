@@ -1,5 +1,20 @@
 ## next
 
+## 0.0.5 
+
+- Updated to Backbone 1.1.0 and Underscore 1.5.2.
+  (westonplatter)
+  
+- Changed from `options.<pluralized_model_name>` to `collection` to store array
+  of Backbone models.
+  (westonplatter)
+  
+- README: Describe how to work with Rails 4 default scaffold generators.
+  (westonplatter)
+  
+- README: Add branching info.
+  (westonplatter)
+
 ## 0.0.4
 
 - Remove Rails unofficially reserved `created_at` and `updated_at` so they're 
