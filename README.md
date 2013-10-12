@@ -100,7 +100,6 @@ If you're using ERB, `index.html.erb`
       });
     </script>
     
-    
 Or HAML, `index.html.haml`
     
     #books
@@ -110,6 +109,18 @@ Or HAML, `index.html.haml`
         window.router = new Library.Routers.BooksRouter({books: #{@books.to_json.html_safe}});
         Backbone.history.start();
       });
+
+If you're using the default Rails 4 scaffold generators, you'll need to adjust 
+the default JSON show view (IE, `show.json`) to render the `id` attribute.
+
+    # BROKEN -- default rails generated show.json.jbuilder
+    json.extract! @book, :title, :author, :created_at, :updated_at
+
+    # FIXED --- after adding `id`
+    json.extract! @book, :id, :title, :author, :created_at, :updated_at
+
+Without adjusting the JSON show view, you will be redirected to a "undefined" 
+url after creating an object.
 
 
 ## Docs
