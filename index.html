@@ -1,11 +1,42 @@
-<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="railsybackbone">RailsyBackbone</h1>
-
-<p>Backbone 1.0.0 <br />
-Underscore 1.5.1</p>
+<!DOCTYPE html><html lang="en"><head><title>index</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="index"><meta name="groc-project-path" content="README.md"><meta name="groc-github-url" content="https://github.com/westonplatter/railsy-backbone"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path"><a href="https://github.com/westonplatter/railsy-backbone/blob/master/README.md">README.md</a></div></div><div id="document"><div class="segment"><div class="comments"><div class="wrapper"><h1 id="railsy-backbone">railsy_backbone</h1>
 
 <p><a href="https://travis-ci.org/westonplatter/railsy_backbone"><img src="https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master" alt="Build Status" title="" /></a></p>
 
-<p>Questions/Suggestions &nbsp; => &nbsp; <a href="https://github.com/westonplatter/railsy_backbone/issues/new">open a GitHub issue - 24 hr response time</a></p>
+<p>A clone of <a href="https://github.com/codebrew/backbone-rails">codebrew/backbone-rails</a> with updated Backbone, Underscore, and jquery-rails versions.</p>
+
+<p>Provides Backbone &amp; Underscore files and modifies Backbone to: <br />
+- include the Rails authenticity token in HTTP requests <br />
+- nest model attributes within the declared &nbsp; <code>paramRoot</code> &nbsp;, EG, </p>
+
+<pre><code class="js">var Book = Backbone.Model.extend({ 
+  url: '/books',
+  paramRoot: 'book'
+});
+
+var book_instance = new Book({ 
+  title:  'the illiad', 
+  author: 'homer'
+});
+
+book_instance.sync();
+</code></pre>
+
+<p>This will cause the resulting HTTP POST to be,</p>
+
+<pre><code class="sh">Started POST "/books" for 127.0.0.1 ...
+  Processing by BooksController#create as JSON
+  Parameters: { "book" =&gt; {  "title" =&gt; "the illiad",  "author" =&gt; "homer", "id" =&gt; 1 } }
+</code></pre>
+
+<h2 id="branches">Branches</h2>
+
+<p>master: <br />
+- Backbone 1.1.0 <br />
+- Underscore 1.5.2  </p>
+
+<p>1-0-stable <br />
+- Backbone 1.0.0 <br />
+- Underscore 1.5.1  </p>
 
 <h2 id="rails-setup">Rails Setup</h2>
 
@@ -22,7 +53,11 @@ Underscore 1.5.1</p>
 $ rails g backbone:install
 </code></pre>
 
-<p>This requires <code>underscore</code>, <code>backbone</code>, and JS customizations to make Backbone play nice with Rails (see Javscript files with <code>rails_backbone.</code> prefix regarding what changed).</p>
+<p>This requires Backbone, Underscore, and the Backbone modifications to implement
+the Rails authenticity token and nesting model attributes in the paramsRoot 
+(see Javscript files with the <code>railsy_backbone.</code> prefix for details).</p>
+
+<p>These will be added to your <code>app/assets/javascripts/application.js</code>:</p>
 
 <pre><code>//= require jquery
 //= require jquery_ujs
@@ -30,16 +65,15 @@ $ rails g backbone:install
 //= require backbone
 //= require railsy_backbone.sync
 //= require railsy_backbone.datalink
-//= require backbone/&lt;your_application_name_here&gt;
+//= require backbone/&lt;your_rails_application_name&gt;
 //= require_tree .
 </code></pre>
 
 <h3 id="generators">Generators</h3>
 
-<p>Rails Install <br />
-Backbone Model <br />
-Backbone Router <br />
-Backbone Scaffold  </p>
+<p>Backbone Model <code>$ rails g backbone:model</code> <br />
+Backbone Router <code>$ rails g backbone:router</code> <br />
+Backbone Scaffold <code>$ rails g backbone:scaffold</code>  </p>
 
 <h3 id="example-usage">Example Usage</h3>
 
@@ -69,9 +103,9 @@ rake db:migrate
 
 <p>Edit <code>books/index.html</code> to execute actions through the Backbone scaffold UI rather than routing to different pages. </p>
 
-<pre><code>### ERB
+<p>If you're using ERB, <code>index.html.erb</code></p>
 
-&lt;div id="books"&gt;&lt;/div&gt;
+<pre><code>&lt;div id="books"&gt;&lt;/div&gt;
 
 &lt;script type="text/javascript"&gt;
   $(function() {
@@ -79,11 +113,11 @@ rake db:migrate
     Backbone.history.start();
   });
 &lt;/script&gt;
+</code></pre>
 
+<p>Or HAML, <code>index.html.haml</code></p>
 
-### HAML
-
-#books
+<pre><code>#books
 
 :javascript
   $(function() {
@@ -92,55 +126,33 @@ rake db:migrate
   });
 </code></pre>
 
-<h2 id="features">Features</h2>
+<p>If you're using the default Rails 4 scaffold generators, you'll need to adjust 
+the default JSON show view (IE, <code>show.json</code>) to render the <code>id</code> attribute.</p>
 
-<ol>
-<li><a href="#nested-model-attributes">Nested Model Attributes</a></li>
-<li><a href="#automatic-rails-csrf-integration">Automatic Rails CSRF Integration</a></li>
-</ol>
+<pre><code># BROKEN -- default rails generated show.json.jbuilder
+json.extract! @book, :title, :author, :created_at, :updated_at
 
-<h3 id="nested-model-attributes">Nested Model Attributes</h3>
-
-<p>Allows you to specify a namespace for model attributes by defining a  <code>paramRoot</code>  attribute. For example, </p>
-
-<pre><code>var Book = Backbone.Model.extend({ 
-  url: '/books',
-  paramRoot: 'book'
-});
-
-var book_instance = new Book({ 
-  title:  'the illiad', 
-  author: 'homer'
-});
-
-book_instance.sync();
+# FIXED --- after adding `id`
+json.extract! @book, :id, :title, :author, :created_at, :updated_at
 </code></pre>
 
-<p>This will cause the HTTP POST to look like this, </p>
-
-<pre><code>Started POST "/books" for 127.0.0.1
-  Processing by BooksController#create as JSON
-  Parameters: { "book" =&gt; { 
-    "title" =&gt; "the illiad", 
-    "author" =&gt; "homer", 
-    "id" =&gt; 1}
-  }
-</code></pre>
-
-<h3 id="automatic-rails-csrf-integration">Automatic Rails CSRF Integration</h3>
-
-<p>Automatically handles the Rails <code>authenticity_token</code>. Or, more technically, sets the  <code>xhr.setRequestHeader</code>  to the Rails CSRF token supplied in the HTML <code>header</code> meta tag.</p>
+<p>Without adjusting the JSON show view, you will be redirected to a "undefined" 
+url after creating an object.</p>
 
 <h2 id="docs">Docs</h2>
 
-<p><a href="http://westonplatter.github.io/railsy_backbone/">Here's the link to our docs</a>.</p>
+<p><a href="http://westonplatter.github.io/railsy_backbone/">Link to the docs</a>.</p>
 
-<p><strong>I really value clear communication</strong> (I'm serious!). If you think something is missing in the docs, <strong>please</strong> let me know via a GitHub issue (<a href="https://github.com/westonplatter/railsy_backbone/issues">create issues here</a>), and I'll look at adding it. </p>
+<p>I value clear communication <strong>(I'm serious!)</strong>. If you think something is missing in the docs, <strong>please</strong> open a GitHub issue (<a href="https://github.com/westonplatter/railsy_backbone/issues">create issues here</a>), and I'd love to add it if it makes sense.</p>
 
-<h2 id="contributions">Contributions</h2>
+<h2 id="contributors">Contributors</h2>
 
-<p><a href="https://github.com/nzaillian">Nicholas Zaillian</a>  </p>
+<p><a href="https://github.com/westonplatter/railsy_backbone/graphs/contributors">These awesome people</a> infused their awesome talent in this project.</p>
 
 <h2 id="credits">Credits</h2>
+
+<p>Inspired by and copied from Ryan Fitzgerald's <a href="https://github.com/codebrew/backbone-rails">codebrew/backbone-rails</a>.</p>
+
+<h2 id="license">License</h2>
 
 <p>See LICENSE</p></div></div></div></div></body></html>

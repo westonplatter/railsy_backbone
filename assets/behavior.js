@@ -20,13 +20,21 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 1,
-            "title": "RailsyBackbone",
-            "slug": "railsybackbone",
+            "title": "railsy_backbone",
+            "slug": "railsy-backbone",
             "isFileHeader": true
           },
           "depth": 1,
           "children": [
             {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "Branches",
+                "slug": "branches"
+              },
+              "depth": 2
+            }, {
               "type": "heading",
               "data": {
                 "level": 2,
@@ -65,33 +73,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Features",
-                "slug": "features"
-              },
-              "depth": 2,
-              "children": [
-                {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Nested Model Attributes",
-                    "slug": "nested-model-attributes"
-                  },
-                  "depth": 3
-                }, {
-                  "type": "heading",
-                  "data": {
-                    "level": 3,
-                    "title": "Automatic Rails CSRF Integration",
-                    "slug": "automatic-rails-csrf-integration"
-                  },
-                  "depth": 3
-                }
-              ]
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 2,
                 "title": "Docs",
                 "slug": "docs"
               },
@@ -100,8 +81,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
               "type": "heading",
               "data": {
                 "level": 2,
-                "title": "Contributions",
-                "slug": "contributions"
+                "title": "Contributors",
+                "slug": "contributors"
               },
               "depth": 2
             }, {
@@ -112,14 +93,30 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
                 "slug": "credits"
               },
               "depth": 2
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 2,
+                "title": "License",
+                "slug": "license"
+              },
+              "depth": 2
             }
           ]
         },
-        "title": "RailsyBackbone"
+        "title": "railsy_backbone"
       },
       "depth": 1,
       "outline": [
         {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "Branches",
+            "slug": "branches"
+          },
+          "depth": 2
+        }, {
           "type": "heading",
           "data": {
             "level": 2,
@@ -158,33 +155,6 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 2,
-            "title": "Features",
-            "slug": "features"
-          },
-          "depth": 2,
-          "children": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Nested Model Attributes",
-                "slug": "nested-model-attributes"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Automatic Rails CSRF Integration",
-                "slug": "automatic-rails-csrf-integration"
-              },
-              "depth": 3
-            }
-          ]
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 2,
             "title": "Docs",
             "slug": "docs"
           },
@@ -193,8 +163,8 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
           "type": "heading",
           "data": {
             "level": 2,
-            "title": "Contributions",
-            "slug": "contributions"
+            "title": "Contributors",
+            "slug": "contributors"
           },
           "depth": 2
         }, {
@@ -203,6 +173,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "level": 2,
             "title": "Credits",
             "slug": "credits"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "License",
+            "slug": "license"
           },
           "depth": 2
         }
@@ -228,6 +206,14 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "level": 2,
             "title": "next",
             "slug": "next"
+          },
+          "depth": 2
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 2,
+            "title": "0.0.5",
+            "slug": "005"
           },
           "depth": 2
         }, {
