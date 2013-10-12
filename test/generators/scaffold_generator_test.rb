@@ -40,7 +40,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
     
     assert_file "#{backbone_path}/views/books/index_view.js.coffee" do |view|
       assert_match /#{Regexp.escape('JST["backbone/templates/books/index"]')}/, view
-      assert_match /#{Regexp.escape('@template(books: @options.books.toJSON() ))')}/, view
+      assert_match /#{Regexp.escape('@template(books: @collection.toJSON() ))')}/, view
       assert_match /#{Regexp.escape("new Dummy.Views.Books.BookView({model : book})")}/, view
     end
     
@@ -78,7 +78,7 @@ class ScaffoldGeneratorTest < Rails::Generators::TestCase
     
     assert_file "#{backbone_path}/views/old_books/index_view.js.coffee" do |view|
       assert_match /#{Regexp.escape('JST["backbone/templates/old_books/index"]')}/, view
-      assert_match /#{Regexp.escape('@template(oldBooks: @options.oldBooks.toJSON() ))')}/, view
+      assert_match /#{Regexp.escape('@template(oldBooks: @collection.toJSON() ))')}/, view
       assert_match /#{Regexp.escape("new Dummy.Views.OldBooks.OldBookView({model : oldBook})")}/, view
     end
     
