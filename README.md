@@ -1,6 +1,4 @@
 # railsy_backbone
-Backbone 1.1.0  
-Underscore 1.5.2
 
 [![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
 
@@ -31,6 +29,16 @@ Started POST "/books" for 127.0.0.1 ...
   Processing by BooksController#create as JSON
   Parameters: { "book" => {  "title" => "the illiad",  "author" => "homer", "id" => 1 } }
 ```
+
+## Branches
+
+master:  
+- Backbone 1.1.0  
+- Underscore 1.5.2  
+
+1-0-stable  
+- Backbone 1.0.0  
+- Underscore 1.5.1  
 
 ## Rails Setup
 
