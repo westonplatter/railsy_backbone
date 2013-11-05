@@ -32,7 +32,7 @@ Started POST "/books" for 127.0.0.1 ...
 
 ## Branches
 
-master:  
+master  
 - Backbone 1.1.0  
 - Underscore 1.5.2  
 
