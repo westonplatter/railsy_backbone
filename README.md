@@ -30,6 +30,10 @@ Started POST "/books" for 127.0.0.1 ...
   Parameters: { "book" => {  "title" => "the illiad",  "author" => "homer", "id" => 1 } }
 ```
 
+## Example App
+
+https://github.com/westonplatter/example_railsy_backbone
+
 ## Branches
 
 master  
