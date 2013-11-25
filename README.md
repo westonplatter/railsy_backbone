@@ -148,3 +148,7 @@ Inspired by and copied from Ryan Fitzgerald's [codebrew/backbone-rails](https://
 
 ## License
 See LICENSE
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/westonplatter/railsy_backbone/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
