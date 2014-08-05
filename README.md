@@ -1,3 +1,7 @@
+# Please Use [codebrew/backbone-rails](https://github.com/codebrew/backbone-rails)
+
+This repo is no longer maintained since the backbone-rails repo is now receiving updates.
+
 # railsy_backbone
 
 [![Gem Version](https://badge.fury.io/rb/railsy_backbone.png)](http://badge.fury.io/rb/railsy_backbone) [![Build Status](https://travis-ci.org/westonplatter/railsy_backbone.png?branch=master)](https://travis-ci.org/westonplatter/railsy_backbone)
